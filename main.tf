@@ -29,8 +29,6 @@ resource "kubernetes_cluster_role_binding" "tiller" {
 
 provider "helm" {
 
-  service_account = "${kubernetes_service_account.tiller.metadata.0.name}"
-
     kubernetes {
       host                   = var.host
       client_certificate     = var.client_certificate
