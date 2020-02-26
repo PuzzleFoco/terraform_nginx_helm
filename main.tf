@@ -1,6 +1,4 @@
 provider "helm" {
-    version        = "~> 0.10.4"
-    install_tiller = true
 
     kubernetes {
       host                   = var.host
