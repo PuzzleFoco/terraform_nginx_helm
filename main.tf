@@ -1,6 +1,35 @@
 
 data "google_client_config" "current" {}
 
+resource "kubernetes_service_account" "tiller" {
+  metadata {
+    name      = "tiller"
+    namespace = "kube-system"
+
+    annotations = {
+      managed_by_terraform = true
+    }
+  }
+}
+
+resource "kubernetes_cluster_role_binding" "cluster_admins" {
+  metadata {
+    name = "tiller-cluster-admins"
+  }
+
+  role_ref {
+    kind      = "ClusterRole"
+    name      = "cluster-admin"
+    api_group = "rbac.authorization.k8s.io"
+  }
+
+  subject {
+    kind      = "ServiceAccount"
+    name      = kubernetes_service_account.tiller.metadata.0.name
+    namespace = kubernetes_service_account.tiller.metadata.0.namespace
+  }
+}
+
 provider "helm" {
     version = "~>0.10"
     install_tiller = true
