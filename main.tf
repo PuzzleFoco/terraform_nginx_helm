@@ -2,14 +2,16 @@ resource "kubernetes_service_account" "tiller" {
   metadata {
     name      = "tiller"
     namespace = "kube-system"
-  }
 
-  automount_service_account_token = true
+    annotations = {
+      managed_by_terraform = true
+    }
+  }
 }
 
-resource "kubernetes_cluster_role_binding" "tiller" {
+resource "kubernetes_cluster_role_binding" "cluster_admins" {
   metadata {
-    name = "tiller"
+    name = "tiller-cluster-admins"
   }
 
   role_ref {
@@ -19,15 +21,16 @@ resource "kubernetes_cluster_role_binding" "tiller" {
   }
 
   subject {
-    kind = "ServiceAccount"
-    name = "tiller"
-
-    api_group = ""
-    namespace = "kube-system"
+    kind      = "ServiceAccount"
+    name      = kubernetes_service_account.tiller.metadata.0.name
+    namespace = kubernetes_service_account.tiller.metadata.0.namespace
   }
 }
 
 provider "helm" {
+    version = "~>0.10"
+    namespace      = kubernetes_service_account.tiller.metadata.0.namespace
+    service_account = kubernetes_service_account.tiller.metadata.0.name
 
     kubernetes {
       host                   = var.host
