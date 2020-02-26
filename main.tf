@@ -1,4 +1,6 @@
 
+data "google_client_config" "current" {}
+
 provider "helm" {
     version = "~>0.10"
     install_tiller = true
@@ -8,6 +10,7 @@ provider "helm" {
       client_certificate     = var.client_certificate
       client_key             = var.client_key
       cluster_ca_certificate = var.cluster_ca_certificate
+      token                  = ${data.google_client_config.current.access_token}
   }
 }
 
