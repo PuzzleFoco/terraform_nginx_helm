@@ -1,6 +1,6 @@
 resource "kubernetes_namespace" "nginx_namespace" {
     metadata {
-        annotaions = {
+        annotations = {
             name = "nginx"
         }
         name = "nginx"
