@@ -1,3 +1,9 @@
+terraform {
+  required_providers {
+    helm = ">= 1.0.0"
+  }
+}
+
 resource "kubernetes_namespace" "nginx_namespace" {
     metadata {
         annotations = {
