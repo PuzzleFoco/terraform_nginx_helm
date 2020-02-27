@@ -13,7 +13,6 @@ data "helm_repository" "nginx-stable" {
 }
 
 resource "helm_release" "nginx_release" {
-    provider    = "helm.${var.alias}"
     name        = "nginx-ingress"
     namespace   = kubernetes_namespace.nginx_namespace.metadata[0].name
     repository  = data.helm_repository.nginx-stable.metadata[0].name

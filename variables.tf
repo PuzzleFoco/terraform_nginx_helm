@@ -1,3 +1,0 @@
-variable "alias" {
-    type = string
-}
