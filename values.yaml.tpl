@@ -2,7 +2,7 @@ controller:
   service:
     enabled: ${controller_service.enabled}
     loadBalancerIP: ${controller_service.loadBalancerIP}
-%{ for annotation in annotations }
     annotations:
-      "${annotation}": "${annotation.*}"
+%{ for annotation in annotations }
+      "${annotation.annotation_key}": "${annotation.annotation_value}"
 %{ endfor }
