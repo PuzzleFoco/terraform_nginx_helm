@@ -4,9 +4,6 @@ variable "controller_service" {
     default     = {
         "enabled" : "true",
         "loadBalancerIP": "",
-        "annotations" = {
-            "annotation_key" : "",
-            "annotation_value" : ""
-        }
+        "annotations" : ""
     }
 }
