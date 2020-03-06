@@ -6,7 +6,7 @@ terraform {
 
 locals {
   values_yaml_rendered = templatefile("./${path.module}/values.yaml.tpl", {
-    loadBalancerIP  = var.loadBalancerIP
+    controller_service  = var.controller_service
   })
 }
 
