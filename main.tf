@@ -6,7 +6,8 @@ terraform {
 
 locals {
   values_yaml_rendered = templatefile("./${path.module}/values.yaml.tpl", {
-    controller_service  = var.controller_service
+    controller_service  = var.controller_service,
+    annotations         = var.annotations
   })
 }
 

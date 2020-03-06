@@ -4,6 +4,11 @@ variable "controller_service" {
     default     = {
         "enabled" : "true",
         "loadBalancerIP": "",
-        "annotations" : ""
     }
+}
+
+variable "annotations" {
+    description = "Annotations for the Controller Settings"
+    type        = map
+    default     = {}
 }
