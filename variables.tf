@@ -3,9 +3,6 @@ variable "controller_service" {
     type        = any
     default     = {
         "enabled" : "true",
-        "annotations": {
-            "" : ""
-        },
         "loadBalancerIP": ""
     }
 }
