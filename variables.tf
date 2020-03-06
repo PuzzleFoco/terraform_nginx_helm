@@ -9,6 +9,6 @@ variable "controller_service" {
 
 variable "annotations" {
     description = "Annotations for the Controller Settings"
-    type        = map
+    type        = any
     default     = {}
 }
