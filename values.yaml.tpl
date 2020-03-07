@@ -3,6 +3,8 @@ controller:
     enabled: ${controller_service.enabled}
     loadBalancerIP: ${controller_service.loadBalancerIP}
     annotations:
-%{ for annotation in annotations }
-      ${annotation.annotation_key} : ${annotation.annotation_value}
-%{ endfor }
+      service\.beta\.kubernetes\.io/azure-load-balancer-resource-group: masterthesisrg
+#     annotations:
+# %{ for annotation in annotations }
+#       ${annotation.annotation_key} : ${annotation.annotation_value}
+# %{ endfor }
