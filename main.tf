@@ -31,7 +31,7 @@ resource "helm_release" "nginx_release" {
     repository  = data.helm_repository.nginx-stable.metadata[0].name
     chart       = "nginx-stable/nginx-ingress"
     timeout     = 600
-    version     = "0.30.0"
+    version     = "1.6.13"
 
     values      = [local.values_yaml_rendered]
 }
