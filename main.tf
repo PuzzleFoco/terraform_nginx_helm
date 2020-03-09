@@ -28,8 +28,7 @@ data "helm_repository" "nginx-stable" {
 resource "helm_release" "nginx_release" {
     name        = "nginx-ingress"
     namespace   = kubernetes_namespace.nginx_namespace.metadata[0].name
-    repository  = data.helm_repository.nginx-stable.metadata[0].name
-    chart       = "nginx-ingress"
+    chart       = "./${path.module}/helm-chart"
     timeout     = 600
 
     values      = [local.values_yaml_rendered]
