@@ -14,9 +14,9 @@ locals {
 resource "kubernetes_namespace" "nginx_namespace" {
     metadata {
         annotations = {
-            name = "nginx"
+            name = "nginx-ingress"
         }
-        name = "nginx"
+        name = "nginx-ingress"
     }
 }
 
