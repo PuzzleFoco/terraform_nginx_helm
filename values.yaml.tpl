@@ -1,6 +1,6 @@
 controller:
   extraArgs:
-    default-ssl-certificate: wildcard
+    default-ssl-certificate: default/wildcard
   service:
     enabled: ${controller_service.enabled}
     loadBalancerIP: ${controller_service.loadBalancerIP}
