@@ -32,7 +32,7 @@ resource "helm_release" "nginx_release" {
     repository  = data.helm_repository.nginx-stable.url
     chart       = "nginx-ingress"
     timeout     = 600
-    version     = "v1.7.0"
+    version     = "0.5.0"
 
     values      = [local.values_yaml_rendered]
 }
