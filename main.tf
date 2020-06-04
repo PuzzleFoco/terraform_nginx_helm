@@ -29,7 +29,7 @@ data "helm_repository" "nginx-stable" {
 resource "helm_release" "nginx_release" {
     name        = "nginx-ingress"
     namespace   = kubernetes_namespace.nginx_namespace.metadata[0].name
-    repository  = data.helm_repository.nginx-stable.name
+    repository  = data.helm_repository.nginx-stable.url
     chart       = "nginx-ingress"
     timeout     = 600
     version     = "v1.7.0"
