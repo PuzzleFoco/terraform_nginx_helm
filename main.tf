@@ -22,8 +22,8 @@ resource "kubernetes_namespace" "nginx_namespace" {
 }
 
 data "helm_repository" "nginx-stable" {
-  name = "nginx-stable"
-  url  = "https://helm.nginx.com/stable"
+  name = "stable"
+  url  = "https://kubernetes-charts.storage.googleapis.com/"
 }
 
 resource "helm_release" "nginx_release" {
@@ -32,7 +32,7 @@ resource "helm_release" "nginx_release" {
     repository  = data.helm_repository.nginx-stable.url
     chart       = "nginx-ingress"
     timeout     = 600
-    version     = "0.5.0"
+    version     = 1.39.1
 
     values      = [local.values_yaml_rendered]
 }

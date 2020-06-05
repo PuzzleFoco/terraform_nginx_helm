@@ -1,11 +1,8 @@
 controller:
-  defaultTLS:
-    secret: cert-manager/wildcard
-  wildcardTLS:
-    secret: cert-manager/wildcard
+  extraArgs:
+    default-ssl-certificate: cert-manager/wildcard
   service:
     enabled: ${controller_service.enabled}
-    type: LoadBalancer
     loadBalancerIP: ${controller_service.loadBalancerIP}
     annotations:
 %{ for annotation in annotations }
